@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2022-03-03T09:45:49 IST" name="Route Work:Smoke" finished-at="2022-03-03T09:47:29 IST" duration-ms="100034">
+    <groups>
+    </groups>
+    <test started-at="2022-03-03T09:45:49 IST" name="Route Work Smoke Testing" finished-at="2022-03-03T09:47:29 IST" duration-ms="100034">
+      <class name="RW.ServiceRW">
+        <test-method is-config="true" signature="startup()[pri:0, instance:RW.ServiceRW@55634720]" started-at="2022-03-03T09:45:47 IST" name="startup" finished-at="2022-03-03T09:45:49 IST" duration-ms="2451" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- startup -->
+        <test-method signature="serviceRW()[pri:0, instance:RW.ServiceRW@55634720]" started-at="2022-03-03T09:45:49 IST" name="serviceRW" finished-at="2022-03-03T09:47:29 IST" duration-ms="99925" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- serviceRW -->
+        <test-method is-config="true" signature="end()[pri:0, instance:RW.ServiceRW@55634720]" started-at="2022-03-03T09:47:29 IST" name="end" finished-at="2022-03-03T09:47:30 IST" duration-ms="252" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- end -->
+      </class> <!-- RW.ServiceRW -->
+    </test> <!-- Route Work Smoke Testing -->
+  </suite> <!-- Route Work:Smoke -->
+</testng-results>

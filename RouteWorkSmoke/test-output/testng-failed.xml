@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [STAGING:Support]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Route Work Smoke Testing(failed)">
+    <classes>
+      <class name="RW.ServiceRW">
+        <methods>
+          <include name="startup"/>
+          <include name="serviceRW"/>
+          <include name="end"/>
+        </methods>
+      </class> <!-- RW.ServiceRW -->
+    </classes>
+  </test> <!-- Route Work Smoke Testing(failed) -->
+</suite> <!-- Failed suite [STAGING:Support] -->
