@@ -4,18 +4,23 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,11 +36,40 @@ public class ServiceRW {
 
 	@BeforeSuite
 	public void startup() {
-		System.setProperty("webdriver.chrome.driver", ".//chromedriver.exe");
-
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+		WebDriverManager.chromedriver().setup();
 		ChromeOptions options = new ChromeOptions();
+		// options.addArguments("headless");
+		options.addArguments("headless");
+		options.addArguments("--incognito");
+		options.addArguments("--test-type");
+		options.addArguments("--no-proxy-server");
+		options.addArguments("--proxy-bypass-list=*");
+		options.addArguments("--disable-extensions");
+		options.addArguments("--no-sandbox");
+		options.addArguments("--headless");
+		options.addArguments("window-size=1366x788");
+		capabilities.setPlatform(Platform.ANY);
+		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 		driver = new ChromeDriver(options);
-		driver.manage().window().maximize();
+		// Default size
+		Dimension currentDimension = driver.manage().window().getSize();
+		int height = currentDimension.getHeight();
+		int width = currentDimension.getWidth();
+		System.out.println("Current height: " + height);
+		System.out.println("Current width: " + width);
+		System.out.println("window size==" + driver.manage().window().getSize());
+
+		// Set new size
+		Dimension newDimension = new Dimension(1366, 788);
+		driver.manage().window().setSize(newDimension);
+
+		// Getting
+		Dimension newSetDimension = driver.manage().window().getSize();
+		int newHeight = newSetDimension.getHeight();
+		int newWidth = newSetDimension.getWidth();
+		System.out.println("Current height: " + newHeight);
+		System.out.println("Current width: " + newWidth);
 	}
 
 	public void login() {
@@ -566,7 +600,7 @@ public class ServiceRW {
 
 		driver.switchTo().alert();
 		driver.switchTo().alert().accept();
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 
 		// Get message after activation of RW
 		String NextGen = driver.findElement(By.id("lmsg")).getText();
@@ -672,12 +706,9 @@ public class ServiceRW {
 
 		String subject = "Selenium Automation Script: Staging Route Work Smoke";
 		try {
-			Email.sendMail("Ravina.prajapati@samyak.com", subject, msg.toString(), "");
-			/*
-			 * NglogEmail.sendMail(
-			 * "pdoshi@samyak.com,byagnik@samyak.com,sdas@samyak.com,pgandhi@samyak.com,asharma@samyak.com,mdoshi@samyak.com,urvashi.Patel@samyak.com,bbhutiya@samyak.com",
-			 * subject, msg.toString(), "");
-			 */
+			Email.sendMail("ravina.prajapati@samyak.com,asharma@samyak.com,parth.doshi@samyak.com", subject,
+					msg.toString(), "");
+
 		} catch (Exception ex) {
 			Logger.getLogger(ServiceRW.class.getName()).log(Level.SEVERE, null, ex);
 		}

@@ -156,5 +156,13 @@
 	<classpathentry kind="con" path="org.testng.TESTNG_CONTAINER"/>
 	<classpathentry kind="lib" path="C:/Ravina/Software/Webdriver All Jar Files/commons-lang3-3.0.jar"/>
 	<classpathentry kind="lib" path="C:/Users/rprajapati/Downloads/testng-7.4.0.jar"/>
+	<classpathentry kind="lib" path="C:/Ravina/Software/Main Jar Files/dec-0.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Ravina/Software/Main Jar Files/httpclient5-5.1.3.jar"/>
+	<classpathentry kind="lib" path="C:/Ravina/Software/Main Jar Files/commons-lang-2.6.jar"/>
+	<classpathentry kind="lib" path="C:/Ravina/Software/Main Jar Files/commons-lang3-3.12.0.jar"/>
+	<classpathentry kind="lib" path="C:/Ravina/Software/Main Jar Files/commons-lang3-3.4.jar"/>
+	<classpathentry kind="lib" path="C:/Ravina/Software/Main Jar Files/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Ravina/Software/Main Jar Files/webdrivermanager-5.0.3.jar"/>
+	<classpathentry kind="lib" path="C:/Ravina/Software/Main Jar Files/httpcore5-5.1.3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
