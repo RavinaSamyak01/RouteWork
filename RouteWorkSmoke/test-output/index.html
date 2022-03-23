@@ -23,7 +23,7 @@
     <div class="top-banner-root">
       <span class="top-banner-title-font">Test results</span>
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -37,7 +37,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" panel-name="suite-Route_Work:Smoke" class="navigator-link">
-              <span class="suite-name border-passed">Route Work:Smoke</span>
+              <span class="suite-name border-failed">Route Work:Smoke</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -90,21 +90,21 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method,   1 passed</span>
+                    <span class="method-stats">1 method, 1 failed,   </span>
                   </li>
                   <li>
-                    <span class="method-list-title passed">Passed methods</span>
-                    <span class="show-or-hide-methods passed">
-                      <a href="#" panel-name="suite-Route_Work:Smoke" class="hide-methods passed suite-Route_Work:Smoke"> (hide)</a> <!-- hide-methods passed suite-Route_Work:Smoke -->
-                      <a href="#" panel-name="suite-Route_Work:Smoke" class="show-methods passed suite-Route_Work:Smoke"> (show)</a> <!-- show-methods passed suite-Route_Work:Smoke -->
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-Route_Work:Smoke" class="hide-methods failed suite-Route_Work:Smoke"> (hide)</a> <!-- hide-methods failed suite-Route_Work:Smoke -->
+                      <a href="#" panel-name="suite-Route_Work:Smoke" class="show-methods failed suite-Route_Work:Smoke"> (show)</a> <!-- show-methods failed suite-Route_Work:Smoke -->
                     </span>
-                    <div class="method-list-content passed suite-Route_Work:Smoke">
+                    <div class="method-list-content failed suite-Route_Work:Smoke">
                       <span>
-                        <img src="passed.png" width="3%"/>
+                        <img src="failed.png" width="3%"/>
                         <a href="#" panel-name="suite-Route_Work:Smoke" title="RW.ServiceRW" class="method navigator-link" hash-for-method="serviceRW">serviceRW</a> <!-- method navigator-link -->
                       </span>
                       <br/>
-                    </div> <!-- method-list-content passed suite-Route_Work:Smoke -->
+                    </div> <!-- method-list-content failed suite-Route_Work:Smoke -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -116,9 +116,9 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Route_Work:Smoke" class="panel Route_Work:Smoke">
-          <div class="suite-Route_Work:Smoke-class-passed">
+          <div class="suite-Route_Work:Smoke-class-failed">
             <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
+              <img src="failed.png"/>
               <span class="class-name">RW.ServiceRW</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
@@ -127,10 +127,29 @@
                   <a name="serviceRW">
                   </a> <!-- serviceRW -->
                   <span class="method-name">serviceRW</span>
+                  <div class="stack-trace">org.openqa.selenium.StaleElementReferenceException: stale element reference: element is not attached to the page document
+  (Session info: chrome=99.0.4844.82)
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/stale_element_reference.html
+Build info: version: &apos;3.13.0&apos;, revision: &apos;2f0d292&apos;, time: &apos;2018-06-25T15:32:14.902Z&apos;
+System info: host: &apos;SIPL92&apos;, ip: &apos;10.212.130.43&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;11.0.13&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 99.0.4844.82, chrome: {chromedriverVersion: 99.0.4844.51 (d537ec02474b5..., userDataDir: C:\WINDOWS\TEMP\scoped_dir2...}, goog:chromeOptions: {debuggerAddress: localhost:50108}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 3295435d452dd00de5a9c50362d6d1fe
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:548)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:276)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:83)
+	at RW.ServiceRW.serviceRW(ServiceRW.java:612)
+... Removed 27 stack frames
+</div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Route_Work:Smoke-class-passed -->
+          </div> <!-- suite-Route_Work:Smoke-class-failed -->
         </div> <!-- panel Route_Work:Smoke -->
         <div panel-name="test-xml-Route_Work:Smoke" class="panel">
           <div class="main-panel-header rounded-window-top">
@@ -187,7 +206,7 @@ data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'serviceRW')
 data.setCell(0, 2, 'RW.ServiceRW')
-data.setCell(0, 3, 146334);
+data.setCell(0, 3, 146733);
 window.suiteTableData['Route_Work:Smoke']= { tableData: data, tableDiv: 'times-div-Route_Work:Smoke'}
 return data;
 }
@@ -224,12 +243,14 @@ return data;
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-suite before -->
               <div class="test-method">
+                <img src="failed.png">
+                </img>
                 <span class="method-name">serviceRW</span>
-                <span class="method-start">2941 ms</span>
+                <span class="method-start">7051 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-suite after">
                 <span class="method-name">end</span>
-                <span class="method-start">149301 ms</span>
+                <span class="method-start">153808 ms</span>
               </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

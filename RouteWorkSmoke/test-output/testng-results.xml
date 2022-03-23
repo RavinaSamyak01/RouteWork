@@ -1,21 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results total="1" passed="1" failed="0" skipped="0">
+<testng-results total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-03-17T04:05:53Z" name="Route Work:Smoke" finished-at="2022-03-17T04:08:20Z" duration-ms="146348">
+  <suite started-at="2022-03-23T04:05:49Z" name="Route Work:Smoke" finished-at="2022-03-23T04:08:16Z" duration-ms="146756">
     <groups>
     </groups>
-    <test started-at="2022-03-17T04:05:53Z" name="Route Work Smoke Testing" finished-at="2022-03-17T04:08:20Z" duration-ms="146348">
+    <test started-at="2022-03-23T04:05:49Z" name="Route Work Smoke Testing" finished-at="2022-03-23T04:08:16Z" duration-ms="146756">
       <class name="RW.ServiceRW">
-        <test-method is-config="true" signature="startup()[pri:0, instance:RW.ServiceRW@61710c6]" started-at="2022-03-17T09:35:51Z" name="startup" finished-at="2022-03-17T09:35:53Z" duration-ms="2929" status="PASS">
+        <test-method is-config="true" signature="startup()[pri:0, instance:RW.ServiceRW@7ac296f6]" started-at="2022-03-23T09:35:42Z" name="startup" finished-at="2022-03-23T09:35:49Z" duration-ms="7028" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- startup -->
-        <test-method signature="serviceRW()[pri:0, instance:RW.ServiceRW@61710c6]" started-at="2022-03-17T09:35:53Z" name="serviceRW" finished-at="2022-03-17T09:38:20Z" duration-ms="146334" status="PASS">
+        <test-method signature="serviceRW()[pri:0, instance:RW.ServiceRW@7ac296f6]" started-at="2022-03-23T09:35:49Z" name="serviceRW" finished-at="2022-03-23T09:38:16Z" duration-ms="146733" status="FAIL">
+          <exception class="org.openqa.selenium.StaleElementReferenceException">
+            <message>
+              <![CDATA[stale element reference: element is not attached to the page document
+  (Session info: chrome=99.0.4844.82)
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/stale_element_reference.html
+Build info: version: '3.13.0', revision: '2f0d292', time: '2018-06-25T15:32:14.902Z'
+System info: host: 'SIPL92', ip: '10.212.130.43', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.13'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 99.0.4844.82, chrome: {chromedriverVersion: 99.0.4844.51 (d537ec02474b5..., userDataDir: C:\WINDOWS\TEMP\scoped_dir2...}, goog:chromeOptions: {debuggerAddress: localhost:50108}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 3295435d452dd00de5a9c50362d6d1fe]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.StaleElementReferenceException: stale element reference: element is not attached to the page document
+  (Session info: chrome=99.0.4844.82)
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/stale_element_reference.html
+Build info: version: '3.13.0', revision: '2f0d292', time: '2018-06-25T15:32:14.902Z'
+System info: host: 'SIPL92', ip: '10.212.130.43', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.13'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 99.0.4844.82, chrome: {chromedriverVersion: 99.0.4844.51 (d537ec02474b5..., userDataDir: C:\WINDOWS\TEMP\scoped_dir2...}, goog:chromeOptions: {debuggerAddress: localhost:50108}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 3295435d452dd00de5a9c50362d6d1fe
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:548)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:276)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:83)
+	at RW.ServiceRW.serviceRW(ServiceRW.java:612)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+	at org.testng.TestNG.run(TestNG.java:1057)
+	at org.testng.TestNG.privateMain(TestNG.java:1364)
+	at org.testng.TestNG.main(TestNG.java:1333)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.StaleElementReferenceException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- serviceRW -->
-        <test-method is-config="true" signature="end()[pri:0, instance:RW.ServiceRW@61710c6]" started-at="2022-03-17T09:38:20Z" name="end" finished-at="2022-03-17T09:38:21Z" duration-ms="705" status="PASS">
+        <test-method is-config="true" signature="end()[pri:0, instance:RW.ServiceRW@7ac296f6]" started-at="2022-03-23T09:38:16Z" name="end" finished-at="2022-03-23T09:38:16Z" duration-ms="648" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- end -->

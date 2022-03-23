@@ -40,14 +40,14 @@ public class ServiceRW {
 		WebDriverManager.chromedriver().setup();
 		ChromeOptions options = new ChromeOptions();
 		// options.addArguments("headless");
-		options.addArguments("headless");
+		// options.addArguments("headless");
 		options.addArguments("--incognito");
 		options.addArguments("--test-type");
 		options.addArguments("--no-proxy-server");
 		options.addArguments("--proxy-bypass-list=*");
 		options.addArguments("--disable-extensions");
 		options.addArguments("--no-sandbox");
-		options.addArguments("--headless");
+		// options.addArguments("--headless");
 		options.addArguments("window-size=1366x788");
 		capabilities.setPlatform(Platform.ANY);
 		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
@@ -513,6 +513,7 @@ public class ServiceRW {
 		driver.findElement(By.id("txtToStopSeq")).clear();
 		driver.findElement(By.id("txtToStopSeq")).sendKeys("5");
 
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnaddshipment")));
 		driver.findElement(By.id("btnaddshipment")).click();
 		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("gvShipmentDetails")));
 
@@ -585,6 +586,7 @@ public class ServiceRW {
 		js.executeScript("arguments[0].scrollIntoView(true);", BtnDone);
 		Thread.sleep(2000);
 		act.moveToElement(BtnDone).click().perform();
+		Thread.sleep(2000);
 
 		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("newcontent")));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ddlStatus")));
@@ -608,6 +610,7 @@ public class ServiceRW {
 
 		// Reset RW list
 		driver.findElement(By.id("btnSearch")).click();
+		Thread.sleep(2000);
 		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("currentForm")));
 
 		// Search again with RW
