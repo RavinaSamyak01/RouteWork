@@ -47,8 +47,10 @@ public class ServiceRW {
 		options.addArguments("--proxy-bypass-list=*");
 		options.addArguments("--disable-extensions");
 		options.addArguments("--no-sandbox");
+		options.addArguments("--start-maximized");
+
 		// options.addArguments("--headless");
-		options.addArguments("window-size=1366x788");
+		// options.addArguments("window-size=1366x788");
 		capabilities.setPlatform(Platform.ANY);
 		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 		driver = new ChromeDriver(options);
@@ -61,15 +63,15 @@ public class ServiceRW {
 		System.out.println("window size==" + driver.manage().window().getSize());
 
 		// Set new size
-		Dimension newDimension = new Dimension(1366, 788);
-		driver.manage().window().setSize(newDimension);
-
-		// Getting
-		Dimension newSetDimension = driver.manage().window().getSize();
-		int newHeight = newSetDimension.getHeight();
-		int newWidth = newSetDimension.getWidth();
-		System.out.println("Current height: " + newHeight);
-		System.out.println("Current width: " + newWidth);
+		/*
+		 * Dimension newDimension = new Dimension(1366, 788);
+		 * driver.manage().window().setSize(newDimension);
+		 * 
+		 * // Getting Dimension newSetDimension = driver.manage().window().getSize();
+		 * int newHeight = newSetDimension.getHeight(); int newWidth =
+		 * newSetDimension.getWidth(); System.out.println("Current height: " +
+		 * newHeight); System.out.println("Current width: " + newWidth);
+		 */
 	}
 
 	public void login() {
@@ -587,7 +589,6 @@ public class ServiceRW {
 		Thread.sleep(2000);
 		act.moveToElement(BtnDone).click().perform();
 		Thread.sleep(2000);
-
 
 		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("newcontent")));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ddlStatus")));
