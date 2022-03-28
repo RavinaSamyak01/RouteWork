@@ -588,6 +588,7 @@ public class ServiceRW {
 		act.moveToElement(BtnDone).click().perform();
 		Thread.sleep(2000);
 
+
 		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("newcontent")));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ddlStatus")));
 		driver.findElement(By.id("ddlStatus")).sendKeys("All");
