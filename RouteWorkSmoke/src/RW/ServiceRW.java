@@ -472,6 +472,7 @@ public class ServiceRW {
 		// Click SaveforLater for Draft
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("btnsaveforlater")));
 		driver.findElement(By.id("btnsaveforlater")).click();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("load")));
 		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("currentForm")));
 
 		// Get Generated RWId
@@ -528,11 +529,15 @@ public class ServiceRW {
 		driver.findElement(By.id("txtToStopSeq")).sendKeys("6");
 		driver.findElement(By.id("txtToCompany")).sendKeys("JAVE PRODUCTIONS, INC");
 		driver.findElement(By.id("txtToCompany")).sendKeys(Keys.TAB);
-		/*
-		 * try { driver.switchTo().alert(); driver.switchTo().alert().accept();
-		 * Thread.sleep(2000); } catch (Exception e) {
-		 * System.out.println("Alert is not present"); }
-		 */
+
+		try {
+			driver.switchTo().alert();
+			driver.switchTo().alert().accept();
+			Thread.sleep(2000);
+		} catch (Exception e) {
+			System.out.println("Alert is not present");
+		}
+
 		driver.findElement(By.id("txtToContact")).sendKeys("BARRY SIEGAL");
 		driver.findElement(By.id("txtToAddr1")).sendKeys("2850 OCEAN PARK BLVD");
 		driver.findElement(By.id("txtToAddr2")).sendKeys("#300");
@@ -589,7 +594,26 @@ public class ServiceRW {
 		Thread.sleep(2000);
 		act.moveToElement(BtnDone).click().perform();
 		Thread.sleep(2000);
+		try {
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("lblShipmentCountErr")));
+			DoneValidation = driver.findElement(By.id("lblShipmentCountErr")).getText();
+			System.out.println("ActualMsg==" + DoneValidation);
 
+			Val1 = "Shipment Stop Sequence is missing. Please include all stops in sequence to generate route.";
+
+			if (DoneValidation.equals(Val1)) {
+				System.out.println("Display this validation when seq not proper: " + DoneValidation);
+			} else {
+				throw new Error("\nStop sequence validation not proper");
+			}
+
+			// Click SaveforLater for Draft
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("btnsaveforlater")));
+			driver.findElement(By.id("btnsaveforlater")).click();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("load")));
+		} catch (Exception StopSequence) {
+			System.out.println("Seq not proper validation not displayed");
+		}
 		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("newcontent")));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ddlStatus")));
 		driver.findElement(By.id("ddlStatus")).sendKeys("All");
