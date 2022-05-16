@@ -1,8 +1,12 @@
 package RW;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Properties;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
@@ -32,10 +36,15 @@ public class ServiceRW {
 	public static GenerateData genData;
 	public static String RdyTime;
 	public static String RecMsg;
-	public String baseUrl = "https://Staging.fedexsameday.com/specialsupport.aspx";
+	// public String baseUrl =
+	// "https://Staging.fedexsameday.com/specialsupport.aspx";
+	public static Properties storage = new Properties();
 
 	@BeforeSuite
-	public void startup() {
+	public void startup() throws IOException {
+		storage = new Properties();
+		FileInputStream fi = new FileInputStream(".\\src\\config.properties");
+		storage.load(fi);
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 		WebDriverManager.chromedriver().setup();
 		ChromeOptions options = new ChromeOptions();
@@ -74,25 +83,40 @@ public class ServiceRW {
 		 */
 	}
 
-	public void login() {
+	public void login() throws InterruptedException {
 		WebDriverWait wait = new WebDriverWait(driver, 50);
-		// DEV
-		// String baseUrl = "https://test.fedexsameday.com/specialsupport.aspx";
-		// Staging
+		String Env = storage.getProperty("Env");
 
-		// String baseUrl = "http://10.20.205.70:9050/specialsupport.aspx";
-		// TEMP Prod
-		// String baseUrl = "https://wwwda2.fedexsameday.com/specialsupport.aspx";
-		driver.get(baseUrl);
-		// Enter User_name and Password and click on Login
-		driver.findElement(By.id("txtUserId")).clear();
-		driver.findElement(By.id("txtUserId")).sendKeys("FedExSupport");
-		driver.findElement(By.id("txtPassword")).clear();
-		// Staging
-		driver.findElement(By.id("txtPassword")).sendKeys("Fedex123");
-		// Production
-		// driver.findElement(By.id("txtPassword")).sendKeys("password");
+		if (Env.equalsIgnoreCase("Pre-Prod")) {
+			String baseUrl = storage.getProperty("PREPRODURL");
+			driver.get(baseUrl);
+			String UserName = storage.getProperty("PREPRODUserName");
+			driver.findElement(By.id("txtUserId")).clear();
+			driver.findElement(By.id("txtUserId")).sendKeys(UserName);
+			String Password = storage.getProperty("PREPRODPassword");
+			driver.findElement(By.id("txtPassword")).clear();
+			driver.findElement(By.id("txtPassword")).sendKeys(Password);
+		} else if (Env.equalsIgnoreCase("STG")) {
+			String baseUrl = storage.getProperty("STGURL");
+			driver.get(baseUrl);
+			String UserName = storage.getProperty("STGUserName");
+			driver.findElement(By.id("txtUserId")).clear();
+			driver.findElement(By.id("txtUserId")).sendKeys(UserName);
+			String Password = storage.getProperty("STGPassword");
+			driver.findElement(By.id("txtPassword")).clear();
+			driver.findElement(By.id("txtPassword")).sendKeys(Password);
+		} else if (Env.equalsIgnoreCase("DEV")) {
+			String baseUrl = storage.getProperty("DEVURL");
+			driver.get(baseUrl);
+			String UserName = storage.getProperty("DEVUserName");
+			driver.findElement(By.id("txtUserId")).clear();
+			driver.findElement(By.id("txtUserId")).sendKeys(UserName);
+			String Password = storage.getProperty("DEVPassword");
+			driver.findElement(By.id("txtPassword")).clear();
+			driver.findElement(By.id("txtPassword")).sendKeys(Password);
 
+		}
+		Thread.sleep(2000);
 		driver.findElement(By.id("rbRouteWork")).click();
 
 		driver.findElement(By.id("cmdLogin")).click();
@@ -731,9 +755,12 @@ public class ServiceRW {
 		msg.append("Recurrence Verification : " + RecMsg + "\n\n");
 
 		msg.append("*** This is automated generated email and send through automation script" + "\n");
+		String baseUrl = storage.getProperty("PREPRODURL");
 		msg.append("Process URL : " + baseUrl);
 
-		String subject = "Selenium Automation Script: Staging Route Work Smoke";
+		String Env = storage.getProperty("Env");
+		String subject = "Selenium Automation Script: " + Env + " : Route Work Smoke";
+
 		try {
 			Email.sendMail("ravina.prajapati@samyak.com,asharma@samyak.com,parth.doshi@samyak.com", subject,
 					msg.toString(), "");
