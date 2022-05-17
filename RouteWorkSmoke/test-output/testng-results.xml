@@ -2,20 +2,20 @@
 <testng-results total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-05-16T04:03:13Z" name="Route Work:Smoke" finished-at="2022-05-16T04:06:11Z" duration-ms="177355">
+  <suite started-at="2022-05-17T04:04:04Z" name="Route Work:Smoke" finished-at="2022-05-17T04:06:44Z" duration-ms="159262">
     <groups>
     </groups>
-    <test started-at="2022-05-16T04:03:13Z" name="Route Work Smoke Testing" finished-at="2022-05-16T04:06:11Z" duration-ms="177355">
+    <test started-at="2022-05-17T04:04:04Z" name="Route Work Smoke Testing" finished-at="2022-05-17T04:06:44Z" duration-ms="159262">
       <class name="RW.ServiceRW">
-        <test-method is-config="true" signature="startup()[pri:0, instance:RW.ServiceRW@7ac296f6]" started-at="2022-05-16T09:33:12Z" name="startup" finished-at="2022-05-16T09:33:13Z" duration-ms="1863" status="PASS">
+        <test-method is-config="true" signature="startup()[pri:0, instance:RW.ServiceRW@7ac296f6]" started-at="2022-05-17T09:34:03Z" name="startup" finished-at="2022-05-17T09:34:04Z" duration-ms="1721" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- startup -->
-        <test-method signature="serviceRW()[pri:0, instance:RW.ServiceRW@7ac296f6]" started-at="2022-05-16T09:33:13Z" name="serviceRW" finished-at="2022-05-16T09:36:11Z" duration-ms="177345" status="PASS">
+        <test-method signature="serviceRW()[pri:0, instance:RW.ServiceRW@7ac296f6]" started-at="2022-05-17T09:34:04Z" name="serviceRW" finished-at="2022-05-17T09:36:44Z" duration-ms="159253" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- serviceRW -->
-        <test-method is-config="true" signature="end()[pri:0, instance:RW.ServiceRW@7ac296f6]" started-at="2022-05-16T09:36:11Z" name="end" finished-at="2022-05-16T09:36:16Z" duration-ms="4749" status="PASS">
+        <test-method is-config="true" signature="end()[pri:0, instance:RW.ServiceRW@7ac296f6]" started-at="2022-05-17T09:36:44Z" name="end" finished-at="2022-05-17T09:36:44Z" duration-ms="617" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- end -->
