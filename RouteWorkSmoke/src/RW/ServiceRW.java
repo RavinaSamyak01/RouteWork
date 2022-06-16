@@ -1,5 +1,6 @@
 package RW;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.text.DateFormat;
@@ -7,11 +8,14 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.Platform;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -83,7 +87,7 @@ public class ServiceRW {
 		 */
 	}
 
-	public void login() throws InterruptedException {
+	public void login() throws InterruptedException, IOException {
 		WebDriverWait wait = new WebDriverWait(driver, 50);
 		String Env = storage.getProperty("Env");
 		System.out.println("Env " + Env);
@@ -91,33 +95,85 @@ public class ServiceRW {
 		if (Env.equalsIgnoreCase("Pre-Prod")) {
 			String baseUrl = storage.getProperty("PREPRODURL");
 			driver.get(baseUrl);
-			String UserName = storage.getProperty("PREPRODUserName");
-			wait.until(ExpectedConditions.elementToBeClickable(By.id("txtUserId")));
-			driver.findElement(By.id("txtUserId")).clear();
-			driver.findElement(By.id("txtUserId")).sendKeys(UserName);
-			String Password = storage.getProperty("PREPRODPassword");
-			driver.findElement(By.id("txtPassword")).clear();
-			driver.findElement(By.id("txtPassword")).sendKeys(Password);
-		} else if (Env.equalsIgnoreCase("STG")) {
+			try {
+				String UserName = storage.getProperty("PREPRODUserName");
+				wait.until(ExpectedConditions.elementToBeClickable(By.id("txtUserId")));
+				driver.findElement(By.id("txtUserId")).clear();
+				driver.findElement(By.id("txtUserId")).sendKeys(UserName);
+				String Password = storage.getProperty("PREPRODPassword");
+				driver.findElement(By.id("txtPassword")).clear();
+				driver.findElement(By.id("txtPassword")).sendKeys(Password);
+			} catch (Exception e) {
+				msg.append("URL is not working==FAIL");
+				getScreenshot(driver, "LoginIssue");
+				driver.quit();
+				Env = storage.getProperty("Env");
+				String subject = "Selenium Automation Script: " + Env + " : Route Work Smoke";
+				String File = ".//Screenshots//LoginIssue.png";
+				try {
+					Email.sendMail("ravina.prajapati@samyak.com,asharma@samyak.com,parth.doshi@samyak.com", subject,
+							msg.toString(), File);
+
+				} catch (Exception ex) {
+					Logger.getLogger(ServiceRW.class.getName()).log(Level.SEVERE, null, ex);
+				}
+			}
+
+		} else if (Env.equalsIgnoreCase("STG"))
+
+		{
+
 			String baseUrl = storage.getProperty("STGURL");
 			driver.get(baseUrl);
-			String UserName = storage.getProperty("STGUserName");
-			wait.until(ExpectedConditions.elementToBeClickable(By.id("txtUserId")));
-			driver.findElement(By.id("txtUserId")).clear();
-			driver.findElement(By.id("txtUserId")).sendKeys(UserName);
-			String Password = storage.getProperty("STGPassword");
-			driver.findElement(By.id("txtPassword")).clear();
-			driver.findElement(By.id("txtPassword")).sendKeys(Password);
+			try {
+				String UserName = storage.getProperty("STGUserName");
+				wait.until(ExpectedConditions.elementToBeClickable(By.id("txtUserId")));
+				driver.findElement(By.id("txtUserId")).clear();
+				driver.findElement(By.id("txtUserId")).sendKeys(UserName);
+				String Password = storage.getProperty("STGPassword");
+				driver.findElement(By.id("txtPassword")).clear();
+				driver.findElement(By.id("txtPassword")).sendKeys(Password);
+			} catch (Exception e) {
+				msg.append("URL is not working==FAIL");
+				getScreenshot(driver, "LoginIssue");
+				driver.quit();
+				Env = storage.getProperty("Env");
+				String subject = "Selenium Automation Script: " + Env + " : Route Work Smoke";
+				String File = ".//Screenshots//LoginIssue.png";
+				try {
+					Email.sendMail("ravina.prajapati@samyak.com,asharma@samyak.com,parth.doshi@samyak.com", subject,
+							msg.toString(), File);
+
+				} catch (Exception ex) {
+					Logger.getLogger(ServiceRW.class.getName()).log(Level.SEVERE, null, ex);
+				}
+			}
 		} else if (Env.equalsIgnoreCase("DEV")) {
 			String baseUrl = storage.getProperty("DEVURL");
 			driver.get(baseUrl);
-			String UserName = storage.getProperty("DEVUserName");
-			wait.until(ExpectedConditions.elementToBeClickable(By.id("txtUserId")));
-			driver.findElement(By.id("txtUserId")).clear();
-			driver.findElement(By.id("txtUserId")).sendKeys(UserName);
-			String Password = storage.getProperty("DEVPassword");
-			driver.findElement(By.id("txtPassword")).clear();
-			driver.findElement(By.id("txtPassword")).sendKeys(Password);
+			try {
+				String UserName = storage.getProperty("DEVUserName");
+				wait.until(ExpectedConditions.elementToBeClickable(By.id("txtUserId")));
+				driver.findElement(By.id("txtUserId")).clear();
+				driver.findElement(By.id("txtUserId")).sendKeys(UserName);
+				String Password = storage.getProperty("DEVPassword");
+				driver.findElement(By.id("txtPassword")).clear();
+				driver.findElement(By.id("txtPassword")).sendKeys(Password);
+			} catch (Exception e) {
+				msg.append("URL is not working==FAIL");
+				getScreenshot(driver, "LoginIssue");
+				driver.quit();
+				Env = storage.getProperty("Env");
+				String subject = "Selenium Automation Script: " + Env + " : Route Work Smoke";
+				String File = ".//Screenshots//LoginIssue.png";
+				try {
+					Email.sendMail("ravina.prajapati@samyak.com,asharma@samyak.com,parth.doshi@samyak.com", subject,
+							msg.toString(), File);
+
+				} catch (Exception ex) {
+					Logger.getLogger(ServiceRW.class.getName()).log(Level.SEVERE, null, ex);
+				}
+			}
 
 		}
 		Thread.sleep(2000);
@@ -127,8 +183,20 @@ public class ServiceRW {
 		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("content")));
 	}
 
+	public static String getScreenshot(WebDriver driver, String screenshotName) throws IOException {
+
+		TakesScreenshot ts = (TakesScreenshot) driver;
+		File source = ts.getScreenshotAs(OutputType.FILE);
+		// after execution, you could see a folder "FailedTestsScreenshots" under src
+		// folder
+		String destination = System.getProperty("user.dir") + "/Report/NA_Screenshot/" + screenshotName + ".png";
+		File finalDestination = new File(destination);
+		FileUtils.copyFile(source, finalDestination);
+		return destination;
+	}
+
 	@Test
-	public void serviceRW() throws InterruptedException {
+	public void serviceRW() throws InterruptedException, IOException {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		Actions act = new Actions(driver);
 		// options.addArguments("--test-type");

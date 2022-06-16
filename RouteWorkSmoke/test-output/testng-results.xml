@@ -2,26 +2,47 @@
 <testng-results total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-05-17T12:02:04Z" name="Route Work:Smoke" finished-at="2022-05-17T12:03:03Z" duration-ms="59332">
+  <suite started-at="2022-06-16T04:03:58Z" name="Route Work:Smoke" finished-at="2022-06-16T04:04:01Z" duration-ms="2834">
     <groups>
     </groups>
-    <test started-at="2022-05-17T12:02:04Z" name="Route Work Smoke Testing" finished-at="2022-05-17T12:03:03Z" duration-ms="59332">
+    <test started-at="2022-06-16T04:03:58Z" name="Route Work Smoke Testing" finished-at="2022-06-16T04:04:01Z" duration-ms="2834">
       <class name="RW.ServiceRW">
-        <test-method is-config="true" signature="startup()[pri:0, instance:RW.ServiceRW@7ac296f6]" started-at="2022-05-17T17:32:01Z" name="startup" finished-at="2022-05-17T17:32:04Z" duration-ms="3170" status="PASS">
+        <test-method is-config="true" signature="startup()[pri:0, instance:RW.ServiceRW@7ac296f6]" started-at="2022-06-16T09:33:56Z" name="startup" finished-at="2022-06-16T09:33:58Z" duration-ms="1963" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- startup -->
-        <test-method signature="serviceRW()[pri:0, instance:RW.ServiceRW@7ac296f6]" started-at="2022-05-17T17:32:04Z" name="serviceRW" finished-at="2022-05-17T17:33:03Z" duration-ms="59320" status="FAIL">
-          <exception class="org.openqa.selenium.TimeoutException">
+        <test-method signature="serviceRW()[pri:0, instance:RW.ServiceRW@7ac296f6]" started-at="2022-06-16T09:33:58Z" name="serviceRW" finished-at="2022-06-16T09:34:01Z" duration-ms="2825" status="FAIL">
+          <exception class="org.openqa.selenium.WebDriverException">
             <message>
-              <![CDATA[Expected condition failed: waiting for visibility of element located by By.className: Fedextitle (tried for 50 second(s) with 500 milliseconds interval)]]>
+              <![CDATA[unknown error: net::ERR_CONNECTION_RESET
+  (Session info: chrome=102.0.5005.63)
+Build info: version: '3.13.0', revision: '2f0d292', time: '2018-06-25T15:32:14.902Z'
+System info: host: 'SIPL92', ip: '10.212.130.216', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.13'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 102.0.5005.63, chrome: {chromedriverVersion: 102.0.5005.61 (0e59bcc00cc4..., userDataDir: C:\WINDOWS\TEMP\scoped_dir2...}, goog:chromeOptions: {debuggerAddress: localhost:50110}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: a3962bea5ebd2c028458ce5b8faee884]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.className: Fedextitle (tried for 50 second(s) with 500 milliseconds interval)
-	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:81)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:271)
-	at RW.ServiceRW.login(ServiceRW.java:105)
-	at RW.ServiceRW.serviceRW(ServiceRW.java:142)
+              <![CDATA[org.openqa.selenium.WebDriverException: unknown error: net::ERR_CONNECTION_RESET
+  (Session info: chrome=102.0.5005.63)
+Build info: version: '3.13.0', revision: '2f0d292', time: '2018-06-25T15:32:14.902Z'
+System info: host: 'SIPL92', ip: '10.212.130.216', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.13'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 102.0.5005.63, chrome: {chromedriverVersion: 102.0.5005.61 (0e59bcc00cc4..., userDataDir: C:\WINDOWS\TEMP\scoped_dir2...}, goog:chromeOptions: {debuggerAddress: localhost:50110}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: a3962bea5ebd2c028458ce5b8faee884
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:548)
+	at org.openqa.selenium.remote.RemoteWebDriver.get(RemoteWebDriver.java:276)
+	at RW.ServiceRW.login(ServiceRW.java:103)
+	at RW.ServiceRW.serviceRW(ServiceRW.java:139)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -45,26 +66,13 @@
 	at org.testng.TestNG.run(TestNG.java:1057)
 	at org.testng.TestNG.privateMain(TestNG.java:1364)
 	at org.testng.TestNG.main(TestNG.java:1333)
-Caused by: org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.className: Fedextitle
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: '3.13.0', revision: '2f0d292', time: '2018-06-25T15:32:14.902Z'
-System info: host: 'SIPL92', ip: '10.212.130.156', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.13'
-Driver info: driver.version: unknown
-	at org.openqa.selenium.support.ui.ExpectedConditions.lambda$findElement$0(ExpectedConditions.java:896)
-	at java.base/java.util.Optional.orElseThrow(Optional.java:408)
-	at org.openqa.selenium.support.ui.ExpectedConditions.findElement(ExpectedConditions.java:895)
-	at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:44)
-	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:206)
-	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:202)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:248)
-	... 25 more
 ]]>
             </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.TimeoutException -->
+          </exception> <!-- org.openqa.selenium.WebDriverException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- serviceRW -->
-        <test-method is-config="true" signature="end()[pri:0, instance:RW.ServiceRW@7ac296f6]" started-at="2022-05-17T17:33:03Z" name="end" finished-at="2022-05-17T17:33:04Z" duration-ms="652" status="PASS">
+        <test-method is-config="true" signature="end()[pri:0, instance:RW.ServiceRW@7ac296f6]" started-at="2022-06-16T09:34:01Z" name="end" finished-at="2022-06-16T09:34:01Z" duration-ms="602" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- end -->
