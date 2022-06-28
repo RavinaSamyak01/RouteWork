@@ -61,6 +61,7 @@ public class ServiceRW {
 		options.addArguments("--disable-extensions");
 		options.addArguments("--no-sandbox");
 		options.addArguments("--start-maximized");
+		options.addArguments("--disable-site-isolation-trials");
 
 		// options.addArguments("--headless");
 		// options.addArguments("window-size=1366x788");
