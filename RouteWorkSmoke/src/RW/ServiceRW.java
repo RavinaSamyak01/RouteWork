@@ -121,9 +121,7 @@ public class ServiceRW {
 				}
 			}
 
-		} else if (Env.equalsIgnoreCase("STG"))
-
-		{
+		} else if (Env.equalsIgnoreCase("STG")){
 
 			String baseUrl = storage.getProperty("STGURL");
 			driver.get(baseUrl);
@@ -177,6 +175,35 @@ public class ServiceRW {
 				}
 			}
 
+		}else if(Env.equalsIgnoreCase("PROD")) {
+
+			String baseUrl = storage.getProperty("PRODURL");
+			driver.get(baseUrl);
+			try {
+				String UserName = storage.getProperty("PRODUserName");
+				wait.until(ExpectedConditions.elementToBeClickable(By.id("txtUserId")));
+				driver.findElement(By.id("txtUserId")).clear();
+				driver.findElement(By.id("txtUserId")).sendKeys(UserName);
+				String Password = storage.getProperty("PRODPassword");
+				driver.findElement(By.id("txtPassword")).clear();
+				driver.findElement(By.id("txtPassword")).sendKeys(Password);
+			} catch (Exception e) {
+				msg.append("URL is not working==FAIL");
+				getScreenshot(driver, "LoginIssue");
+				driver.quit();
+				Env = storage.getProperty("Env");
+				String subject = "Selenium Automation Script: " + Env + " : Route Work Smoke";
+				String File = ".//Screenshots//LoginIssue.png";
+				try {
+					Email.sendMail("ravina.prajapati@samyak.com,asharma@samyak.com,parth.doshi@samyak.com", subject,
+							msg.toString(), File);
+
+				} catch (Exception ex) {
+					Logger.getLogger(ServiceRW.class.getName()).log(Level.SEVERE, null, ex);
+				}
+			}
+
+		
 		}
 		Thread.sleep(2000);
 		WebElement RWRadio = driver.findElement(By.id("rbRouteWork"));
@@ -720,6 +747,7 @@ public class ServiceRW {
 		driver.findElement(By.id("ddlStatus")).sendKeys("All");
 		driver.findElement(By.id("txtRouteWorkId")).sendKeys(RWid1);
 		driver.findElement(By.id("btnSearch")).click();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("load")));
 		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("currentForm")));
 
 		// Active RW
@@ -730,6 +758,8 @@ public class ServiceRW {
 		driver.switchTo().alert();
 		driver.switchTo().alert().accept();
 		Thread.sleep(2000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("load")));
+
 
 		// Get message after activation of RW
 		String NextGen = driver.findElement(By.id("lmsg")).getText();
