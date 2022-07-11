@@ -121,7 +121,7 @@ public class ServiceRW {
 				}
 			}
 
-		} else if (Env.equalsIgnoreCase("STG")){
+		} else if (Env.equalsIgnoreCase("STG")) {
 
 			String baseUrl = storage.getProperty("STGURL");
 			driver.get(baseUrl);
@@ -175,7 +175,7 @@ public class ServiceRW {
 				}
 			}
 
-		}else if(Env.equalsIgnoreCase("PROD")) {
+		} else if (Env.equalsIgnoreCase("PROD")) {
 
 			String baseUrl = storage.getProperty("PRODURL");
 			driver.get(baseUrl);
@@ -203,7 +203,6 @@ public class ServiceRW {
 				}
 			}
 
-		
 		}
 		Thread.sleep(2000);
 		WebElement RWRadio = driver.findElement(By.id("rbRouteWork"));
@@ -234,7 +233,7 @@ public class ServiceRW {
 		// options.addArguments("--test-type");
 		WebDriverWait wait = new WebDriverWait(driver, 50);
 		genData = new GenerateData();
-
+		String Env = storage.getProperty("Env");
 		// --Login
 		login();
 
@@ -265,11 +264,21 @@ public class ServiceRW {
 		String RWName = driver.findElement(By.id("txtrouteworkdescription")).getAttribute("value");
 		System.out.println(RWName);
 
-		// Customer
-		// Staging
-		driver.findElement(By.id("txtCustCode")).sendKeys("117117117");
-		// TEMP Prod
-		// driver.findElement(By.id("txtCustCode")).sendKeys("777777777");
+		// --Enter customer
+
+		if (Env.equalsIgnoreCase("STG")) {
+			driver.findElement(By.id("txtCustCode")).sendKeys("117117117");
+			driver.findElement(By.id("txtCustCode")).sendKeys(Keys.TAB);
+
+		} else if (Env.equalsIgnoreCase("Pre-Prod")) {
+			driver.findElement(By.id("txtCustCode")).sendKeys("117117117");
+			driver.findElement(By.id("txtCustCode")).sendKeys(Keys.TAB);
+
+		} else if (Env.equalsIgnoreCase("Prod")) {
+			driver.findElement(By.id("txtCustCode")).sendKeys("777777777");
+			driver.findElement(By.id("txtCustCode")).sendKeys(Keys.TAB);
+
+		}
 
 		// Declare Value
 		driver.findElement(By.id("declared_value")).clear();
@@ -296,7 +305,7 @@ public class ServiceRW {
 		// System.out.println(stdate1);
 
 		Date enddate = new Date();
-		Date addedDate1 = addDays(enddate, 5);
+		Date addedDate1 = addDays(enddate, 1);
 		String enddate1 = dateFormat.format(addedDate1);
 		// System.out.println(enddate1);
 
@@ -622,9 +631,11 @@ public class ServiceRW {
 		driver.findElement(By.id("btnSearch")).click();
 		Thread.sleep(2000);
 		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("currentForm")));
+		getScreenshot(driver, "CreatedRW");
 
 		// Edit RW
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//*[@id='dgRWList_lbEdit_0']/img")));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='dgRWList_lbEdit_0']/img")));
 		driver.findElement(By.xpath(".//*[@id='dgRWList_lbEdit_0']/img")).click();
 		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("content1")));
 
@@ -749,6 +760,7 @@ public class ServiceRW {
 		driver.findElement(By.id("btnSearch")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("load")));
 		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("currentForm")));
+		getScreenshot(driver, "CreatedRWSearch");
 
 		// Active RW
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='dgRWList_lbActivate_0']/img")));
@@ -760,8 +772,8 @@ public class ServiceRW {
 		Thread.sleep(2000);
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("load")));
 
-
 		// Get message after activation of RW
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("lmsg")));
 		String NextGen = driver.findElement(By.id("lmsg")).getText();
 		System.out.println(NextGen);
 
@@ -793,42 +805,46 @@ public class ServiceRW {
 		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("dgRWOccurance")));
 		String ActGen1 = driver.findElement(By.xpath("//*[@id=\"dgRWOccurance\"]//tr[2]/td[6]")).getText();
 		// System.out.println(ActGen1);
-		String ActGen2 = driver.findElement(By.xpath("//*[@id=\"dgRWOccurance\"]//tr[3]/td[6]")).getText();
+		// String ActGen2 =
+		// driver.findElement(By.xpath("//*[@id=\"dgRWOccurance\"]//tr[3]/td[6]")).getText();
 		// System.out.println(ActGen2);
-		String ActGen3 = driver.findElement(By.xpath("//*[@id=\"dgRWOccurance\"]//tr[4]/td[6]")).getText();
+		// String ActGen3 =
+		// driver.findElement(By.xpath("//*[@id=\"dgRWOccurance\"]//tr[4]/td[6]")).getText();
 		// System.out.println(ActGen3);
 
 		Date SchGen1 = new Date();
 		String Expdate1 = dateFormat.format(SchGen1);
 		// System.out.println(Expdate1);
 
-		Date SchGen2 = new Date();
-		Date addedSchDate1 = addDays(SchGen2, 2);
-		String Expdate2 = dateFormat.format(addedSchDate1);
+		/*
+		 * Date SchGen2 = new Date(); Date addedSchDate1 = addDays(SchGen2, 2); String
+		 * Expdate2 = dateFormat.format(addedSchDate1);
+		 */
 		// System.out.println(Expdate2);
 
-		Date SchGen3 = new Date();
-		Date addedSchDate2 = addDays(SchGen3, 3);
-		String Expdate3 = dateFormat.format(addedSchDate2);
+		/*
+		 * Date SchGen3 = new Date(); Date addedSchDate2 = addDays(SchGen3, 3); String
+		 * Expdate3 = dateFormat.format(addedSchDate2);
+		 */
 		// System.out.println(Expdate3);
 
 		String Expdate1final = Expdate1 + RdyTime;
 		// System.out.println(Expdate1final);
-		String Expdate2final = Expdate2 + RdyTime;
+		// String Expdate2final = Expdate2 + RdyTime;
 		// System.out.println(Expdate2final);
-		String Expdate3final = Expdate3 + RdyTime;
+		// String Expdate3final = Expdate3 + RdyTime;
 		// System.out.println(Expdate3final);
 
 		if (ActGen1.contains(Expdate1final)) {
-			if (ActGen2.contains(Expdate2final)) {
-				if (ActGen3.contains(Expdate3final)) {
-					RecMsg = "All Schedule will generate proper as per recurrence set";
-					System.out.println(RecMsg);
-				}
-
-			}
-
+			// if (ActGen2.contains(Expdate2final)) {
+			// if (ActGen3.contains(Expdate3final)) {
+			RecMsg = "All Schedule will generate proper as per recurrence set";
+			System.out.println(RecMsg);
 		}
+
+		// }
+
+		// }
 
 		// Close the new window, if that window no more required
 		driver.close();
@@ -856,8 +872,8 @@ public class ServiceRW {
 
 		msg.append("Schedule in Order Queue : " + "\n");
 		msg.append(ActGen1 + "\n");
-		msg.append(ActGen2 + "\n");
-		msg.append(ActGen3 + "\n\n");
+		//msg.append(ActGen2 + "\n");
+		//msg.append(ActGen3 + "\n\n");
 
 		msg.append("Recurrence Verification : " + RecMsg + "\n\n");
 
@@ -865,7 +881,7 @@ public class ServiceRW {
 		String baseUrl = storage.getProperty("PREPRODURL");
 		msg.append("Process URL : " + baseUrl);
 
-		String Env = storage.getProperty("Env");
+		Env = storage.getProperty("Env");
 		String subject = "Selenium Automation Script: " + Env + " : Route Work Smoke";
 
 		try {
